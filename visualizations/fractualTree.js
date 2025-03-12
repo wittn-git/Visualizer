@@ -1,5 +1,5 @@
 function fractualTreeSketch(p) {
-
+    
     p.branch = function(length) {
         p.strokeWeight(p.random(length / 20, length / 12));
         if (length > 30) {
@@ -24,11 +24,11 @@ function fractualTreeSketch(p) {
     };
 
     p.setup = function() {
-        let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+        let canvas = p.createCanvas(window.innerWidth, window.innerHeight);
         canvas.parent("canvas-container");
         p.background(30, 100, 200);
         p.translate(p.width / 2, p.height);
-        p.branch(100);
+        p.branch(p.height / 8);
     };
 
 };
