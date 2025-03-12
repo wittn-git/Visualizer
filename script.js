@@ -1,4 +1,5 @@
 let currentSketch = null;
+let currentSketchName = null;
 const sketches = {};
 
 function loadVisualization(name) {
@@ -8,6 +9,7 @@ function loadVisualization(name) {
     if (currentSketch) {
         currentSketch.remove();
         currentSketch = null;
+        currentSketchName = null;
     }
 
     let oldScript = document.getElementById("visualization-script");
@@ -22,6 +24,7 @@ function loadVisualization(name) {
     script.onload = function () {
         if (sketches[name]) {
             currentSketch = new p5(sketches[name]);
+            currentSketchName = name;
         }
     };
 
@@ -41,6 +44,7 @@ function goHome() {
     if (currentSketch) {
         currentSketch.remove();
         currentSketch = null;
+        currentSketchName = null;
     }
 
     let script = document.getElementById("visualization-script");
@@ -50,10 +54,15 @@ function goHome() {
 }
 
 document.addEventListener("keydown", function(event) {
+    
     if (document.getElementById("visualization-container").style.display === "block") {
-         if (event.key === "Backspace") {
+        if (event.key === "Backspace") {
             event.preventDefault();
             goHome();
+        }
+        if (event.key === " ") {
+            event.preventDefault();
+            loadVisualization(currentSketchName);
         }
     }
 });
