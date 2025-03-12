@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Visualizer</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer src="script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    </head>
+    <body>
+        <div id="home">
+            <h1>Welcome to the Visualizer</h1>
+            <p>Select a visualization:</p>
+            <button onclick="loadVisualization('boids')">Swarm (Boids)</button>
+            <button onclick="loadVisualization('tree')">Spatial Tree</button>
+        </div>
+        <div id="visualization-container" style="display: none;">
+            <div id="canvas-container"></div>
+        </div>
+    </body>
+</html>
