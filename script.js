@@ -21,19 +21,17 @@ function loadVisualization(name) {
     script.src = `visualizations/${name}.js`;
     script.id = "visualization-script";
 
-    script.onload = function () {
+    script.onload = function() {
         if (sketches[name]) {
             currentSketch = new p5(sketches[name]);
             currentSketchName = name;
+            currentSketch.windowResized = function () {
+                currentSketch.resizeCanvas(window.innerWidth, window.innerHeight);
+                currentSketch.setup();
+            };
         }
     };
-
-    if (currentSketch) {
-        currentSketch.windowResized = function () {
-            currentSketch.resizeCanvas(window.innerWidth, window.innerHeight);
-        };
-    }
-
+    
     document.body.appendChild(script);
 }
 
